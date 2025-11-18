@@ -1,0 +1,489 @@
+/* Palette ispirata al Giappone / ornitologia:
+   - sfondo carta: #fdf7ee
+   - verde natura: #166534
+   - rosso hinomaru: #b91c1c
+   - indaco scuro: #0f172a
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  margin: 0;
+  background: radial-gradient(circle at top, #fef9c3 0, #fdf7ee 40%, #e5e7eb 100%);
+  color: #111827;
+}
+
+/* ANIMAZIONI BASE */
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* HEADER */
+
+header {
+  background: linear-gradient(135deg, #0f172a, #111827);
+  color: white;
+  text-align: center;
+  padding: 32px 20px 26px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 3px solid #b91c1c;
+  animation: fadeDown 0.5s ease-out;
+}
+
+/* cerchi decorativi stile sole / luna */
+header::before,
+header::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  border: 1px solid rgba(248, 250, 252, 0.18);
+  top: -80px;
+  opacity: 0.8;
+}
+
+header::before {
+  right: -40px;
+}
+
+header::after {
+  left: -80px;
+  top: 10px;
+}
+
+.logo-img {
+  width: 120px;
+  margin-bottom: 10px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.35));
+  position: relative;
+  z-index: 1;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  position: relative;
+  z-index: 1;
+}
+
+header p {
+  margin: 6px 0 0;
+  font-size: 0.95rem;
+  opacity: 0.95;
+  position: relative;
+  z-index: 1;
+}
+
+/* NAVBAR */
+
+nav {
+  background: rgba(15, 23, 42, 0.96);
+  text-align: center;
+  padding: 10px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.6);
+}
+
+nav a {
+  color: #e5e7eb;
+  text-decoration: none;
+  margin: 0 12px;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0;
+  height: 2px;
+  background: #facc15;
+  transition: width 0.25s ease;
+}
+
+nav a:hover {
+  color: #facc15;
+  transform: translateY(-1px);
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* LAYOUT GENERALE */
+
+.container {
+  max-width: 960px;
+  margin: 22px auto 32px;
+  padding: 0 16px;
+}
+
+section {
+  background: #fefcf7;
+  padding: 20px 18px;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  position: relative;
+  animation: fadeUp 0.5s ease-out;
+}
+
+/* piccolo effetto carta / pennellata */
+section::before {
+  content: "";
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, rgba(254, 249, 195, 0.9), transparent);
+  top: -35px;
+  right: -30px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+section h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+section h2::before {
+  content: "";
+  width: 5px;
+  height: 18px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #b91c1c, #f97316);
+}
+
+/* TESTO GENERALE */
+
+p {
+  line-height: 1.6;
+  margin: 0.3rem 0 0.7rem;
+}
+
+ul {
+  margin: 0.4rem 0 0.6rem;
+  padding-left: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* GALLERIA */
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.gallery-item {
+  background: #f9fafb;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.gallery-item h3 {
+  margin: 8px 0 4px;
+  font-size: 0.95rem;
+}
+
+.gallery-item p {
+  font-size: 0.85rem;
+  color: #4b5563;
+}
+
+.gallery-thumb {
+  background: linear-gradient(135deg, #dcfce7, #fef9c3);
+  border-radius: 8px;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  color: #166534;
+  border: 1px dashed #86efac;
+  overflow: hidden;
+}
+
+/* hover galleria */
+.gallery-item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(15, 23, 42, 0.15);
+  border-color: #cbd5f5;
+}
+
+.gallery-thumb img {
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .gallery-thumb img {
+  transform: scale(1.04);
+}
+
+/* SHOP */
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-top: 14px;
+}
+
+.product-card {
+  background: #f9fafb;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.16);
+  border-color: #cbd5f5;
+}
+
+.product-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.product-header h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.badge {
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1px solid #fecaca;
+}
+
+.product-target {
+  font-size: 0.85rem;
+  color: #4b5563;
+  margin: 0;
+}
+
+.product-card ul {
+  margin: 6px 0 4px;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+}
+
+.price {
+  font-weight: 700;
+  margin-top: 4px;
+  margin-bottom: 8px;
+  color: #166534;
+}
+
+/* BOTTONI */
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #b91c1c;
+  background: #b91c1c;
+  color: #fef2f2;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease, color 0.2s ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(185, 28, 28, 0.4);
+  background: #991b1b;
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.btn-outline {
+  background: transparent;
+  color: #b91c1c;
+}
+
+.btn-outline:hover {
+  background: #fee2e2;
+  color: #7f1d1d;
+}
+
+/* NOTE PICCOLE */
+
+.shop-small,
+.nota-galleria,
+.shop-note {
+  margin-top: 14px;
+  font-size: 0.8rem;
+  color: #6b7280;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+  header {
+    padding: 26px 14px 20px;
+  }
+
+  header h1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.12em;
+  }
+
+  nav a {
+    margin: 0 6px;
+    font-size: 0.72rem;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  section {
+    padding: 16px 14px;
+  }
+}
+
+/* --- ANIMAZIONI EXTRA --- */
+
+/* Entrata sfalsata delle sezioni nella pagina */
+.container section:nth-of-type(1) {
+  animation-delay: 0.05s;
+}
+
+.container section:nth-of-type(2) {
+  animation-delay: 0.12s;
+}
+
+.container section:nth-of-type(3) {
+  animation-delay: 0.19s;
+}
+
+.container section:nth-of-type(4) {
+  animation-delay: 0.26s;
+}
+
+.container section:nth-of-type(5) {
+  animation-delay: 0.33s;
+}
+
+/* Effetto sollevamento sezioni */
+section {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+section:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(15, 23, 42, 0.16);
+}
+
+/* Hover delicato sul logo */
+.logo-img {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.logo-img:hover {
+  transform: translateY(-2px) scale(1.03);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.55));
+}
+
+/* Bottone "torna su" */
+#backToTop {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 1px solid rgba(148, 163, 184, 0.8);
+  background: rgba(15, 23, 42, 0.9);
+  color: #f9fafb;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 30;
+}
+
+#backToTop.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#backToTop:hover {
+  transform: translateY(-2px);
+}
+
+#backToTop:active {
+  transform: translateY(0);
+}
